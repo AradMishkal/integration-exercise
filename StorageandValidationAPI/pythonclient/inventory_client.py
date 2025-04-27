@@ -18,12 +18,16 @@ def generate_csv(): # Create a sample CSV file
     print("CSV file generated as inventory.csv")
 
 
-def upload(): # Read CSV and upload data to the API
+def upload():
     with open('inventory.csv', newline='') as f:
         reader = csv.DictReader(f)
         data = [row for row in reader]
     response = requests.post(API_URL, json=data)
-    print(response.json())
+    if response.status_code == 201:
+        print(response.json())
+    else:
+        print(f"Failed to upload: {response.status_code} - {response.text}")
+
 
 
 def list_uploads(): # Get batch summaries from the API

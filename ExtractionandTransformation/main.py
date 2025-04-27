@@ -106,8 +106,6 @@ def get_s3_csv_url(html_url):
     bucket = bucket_tag.text.strip()
     region = region_tag["data-region"]
 
-    # Extract all path parts (ignoring nested spans) and join them with "/"
-    # to correctly build the full object key for the S3 file.
     path_spans = object_tag.find_all("span", class_="path", recursive=True)
     object_key_parts = [span.get_text(strip=True) for span in path_spans if not span.find("span")]
     object_key = "/".join(object_key_parts)

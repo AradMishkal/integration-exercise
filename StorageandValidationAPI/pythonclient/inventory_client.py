@@ -2,10 +2,10 @@ import csv
 import json
 import requests
 
-API_URL = "http://localhost:3000/inventory_uploads.json" # API endpoint
+API_URL = "http://localhost:3000/inventory_uploads.json"  # API endpoint to interact with Rails server
 
 
-def generate_csv(): # Create a sample CSV file
+def generate_csv():  # Create a sample CSV file
     data = [
         {'name': 'Widget A', 'quantity': '10', 'price': '2.50'},
         {'name': 'Widget B', 'quantity': '5', 'price': '3.00'},
@@ -18,19 +18,18 @@ def generate_csv(): # Create a sample CSV file
     print("CSV file generated as inventory.csv")
 
 
-def upload():
+def upload():  # Read CSV and send data to Rails server
     with open('inventory.csv', newline='') as f:
         reader = csv.DictReader(f)
         data = [row for row in reader]
     response = requests.post(API_URL, json=data)
-    if response.status_code == 201:
+    if 200 <= response.status_code < 300:
         print(response.json())
     else:
         print(f"Failed to upload: {response.status_code} - {response.text}")
 
 
-
-def list_uploads(): # Get batch summaries from the API
+def list_uploads():  # Get batch summaries from Rails server
     response = requests.get(API_URL)
     print(json.dumps(response.json(), indent=2))
 

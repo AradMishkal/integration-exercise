@@ -22,7 +22,7 @@ class TestCSVProcessing(unittest.TestCase):
 
         self.assertIsNotNone(processed)
         self.assertEqual(processed["Department"], "BEER")
-        self.assertEqual(processed["Price"], "21.40")  # 20 * 1.07 = 21.4
+        self.assertEqual(processed["Price"], "21.40")
         self.assertIn("high_margin", processed["tags"])
         self.assertEqual(processed["name"], "Test Beer Lager")
         self.assertIn("department", processed["properties"])

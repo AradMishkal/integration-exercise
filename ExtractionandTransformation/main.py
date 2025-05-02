@@ -113,7 +113,7 @@ def get_s3_csv_url(html_url):
     return f"https://{bucket}.s3.{region}.amazonaws.com/{object_key}"
 
 
-def download_csv_from_s3(s3_url, store_local=True, file_path=None):
+def download_csv_from_s3(s3_url, store_local, file_path=None):
     response = requests.get(s3_url)
     response.raise_for_status()
     csv_content = response.content.decode('utf-8')

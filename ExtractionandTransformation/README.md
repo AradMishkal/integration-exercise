@@ -4,10 +4,12 @@ This script downloads an inventory file from a link, processes it based on a lis
 
 ## How to run
 
-1. Install the required libraries on your IDE
-2. Run the script: 'python process_inventory.py'
-3. Once you run the code, it will ask you if you want to store the original file locally, give yes/no input
-4. The script applies all required processing rules and saves the final clean data as 'output.csv'
+```bash
+git clone https://github.com/AradMishkal/integration-exercise.git
+cd integration-exercise\ExtractionandTransformation
+pip install requests beautifulsoup4
+python main.py
+```
 
 ## Notes
 
